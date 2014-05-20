@@ -9,15 +9,20 @@ $(document).ready(function($) {
   var index = -1;
   var rows;
   var ENABLE_KEY_NAV = true;
-  ticket = $('body.controller-issues.action-show').length;
-  reports = $('body.controller-issues.action-index').length;
-  timeline = $('body.controller-activities.action-index').length;
-  search = $('body.controller-search.action-index').length;
+  issues_show = $('body.controller-issues.action-show').length;
+  issues_index = $('body.controller-issues.action-index').length;
+  activities_index = $('body.controller-activities.action-index').length;
+  search_index = $('body.controller-search.action-index').length;
+  my_page = $('body.controller-my.action-page').length;
+  wiki_index = $('body.controller-wiki.action-index,body.controller-wiki.action-date_index').length;
   rowselector =
-    ticket ? 'div.description, #history div.journal' :
-    reports ? 'table.list.issues tr.issue' :
-    timeline ? '#activity dt' :
-    search ? '#search-results dt' : null ;
+    issues_show ? 'div.description, #history div.journal' :
+    issues_index ? 'table.list.issues tr.issue' :
+    activities_index ? '#activity dt' :
+    search_index ? '#search-results dt' :
+    my_page ? 'tr.issue' :
+    wiki_index ? '#content > ul > li' :
+    null ;
   function rescan() {
     // support for dynamic add by autopagerized or some
     rows = $(rowselector).filter(function() {
@@ -71,7 +76,7 @@ $(document).ready(function($) {
     window.open(url, "_blank")
   }
   $(document).bind('keydown',
-    ticket ? function(event) {
+    issues_show ? function(event) {
       if (!ENABLE_KEY_NAV) return true;
       if (event.which == 71) { g(event) }
       if (event.which == 72) { h(event) }
@@ -91,7 +96,7 @@ $(document).ready(function($) {
       if (event.which == 57) { move(function(index) {return 9})(event) }
       if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
     } :
-      timeline ? function(event) {
+      activities_index ? function(event) {
       if (!ENABLE_KEY_NAV) return true;
       if (event.which == 40) { j(event) } // down arrow
       if (event.which == 74) { j(event) }
@@ -103,22 +108,7 @@ $(document).ready(function($) {
       if (event.which == 13) { v(event) } // Enter key
       if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
     } :
-      reports ? function(event) {
-      if (!ENABLE_KEY_NAV) return true;
-      if (event.which == 40) { j(event) } // down arrow
-      if (event.which == 74) { j(event) }
-      if (event.which == 38) { k(event) } // up arrow
-      if (event.which == 75) { k(event) }
-      if (event.which == 79) { o(event) }
-      if (event.which == 80) { p(event) }
-      if (event.which == 86) { v(event) }
-      if (event.which == 13) { v(event) } // Enter key
-      if (event.which == 71) { g(event) }
-      if (event.which == 72) { h(event) }
-      if (event.which == 48) { h(event) } // '0'
-      if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
-    } :
-      search ? function(event) {
+      issues_index | search_index | my_page | wiki_index ? function(event) {
       if (!ENABLE_KEY_NAV) return true;
       if (event.which == 40) { j(event) } // down arrow
       if (event.which == 74) { j(event) }
