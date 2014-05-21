@@ -9,6 +9,9 @@ $(document).ready(function($) {
   var index = -1;
   var rows;
   var ENABLE_KEY_NAV = true;
+  welcome_index = $('body.controller-welcome.action-index').length;
+  projects_index = $('body.controller-projects.action-index').length;
+  projects_show = $('body.controller-projects.action-show').length;
   issues_show = $('body.controller-issues.action-show').length;
   issues_index = $('body.controller-issues.action-index').length;
   activities_index = $('body.controller-activities.action-index').length;
@@ -16,6 +19,9 @@ $(document).ready(function($) {
   my_page = $('body.controller-my.action-page').length;
   wiki_index = $('body.controller-wiki.action-index,body.controller-wiki.action-date_index').length;
   rowselector =
+    welcome_index ? "div.box > ul > li, div.box > p" :
+    projects_index ? '#projects-index > ul > li' :
+    projects_show ? 'div.box > ul > li, div.box > p' :
     issues_show ? 'div.description, #history div.journal' :
     issues_index ? 'table.list.issues tr.issue' :
     activities_index ? '#activity dt' :
@@ -75,40 +81,35 @@ $(document).ready(function($) {
     url = $('a', selected[0])[0].href
     window.open(url, "_blank")
   }
+  hash = function() {
+  	window.location.hash = '#' + selected.attr('id');
+  }
   $(document).bind('keydown',
     issues_show ? function(event) {
       if (!ENABLE_KEY_NAV) return true;
-      if (event.which == 71) { g(event) }
-      if (event.which == 72) { h(event) }
-      if (event.which == 40) { j(event) } // down arrow
-      if (event.which == 74) { j(event) }
-      if (event.which == 38) { k(event) } // up arrow
-      if (event.which == 75) { k(event) }
-      if (event.which == 48) { h(event) } // '0'
-      if (event.which == 49) { move(function(index) {return 1})(event) }
-      if (event.which == 50) { move(function(index) {return 2})(event) }
-      if (event.which == 51) { move(function(index) {return 3})(event) }
-      if (event.which == 52) { move(function(index) {return 4})(event) }
-      if (event.which == 53) { move(function(index) {return 5})(event) }
-      if (event.which == 54) { move(function(index) {return 6})(event) }
-      if (event.which == 55) { move(function(index) {return 7})(event) }
-      if (event.which == 56) { move(function(index) {return 8})(event) }
-      if (event.which == 57) { move(function(index) {return 9})(event) }
+      if (event.which == 71) { g(event); hash(); }
+      if (event.which == 72) { h(event); hash(); }
+      if (event.which == 40) { j(event); hash(); } // down arrow
+      if (event.which == 74) { j(event); hash(); }
+      if (event.which == 38) { k(event); hash(); } // up arrow
+      if (event.which == 75) { k(event); hash(); }
+      if (event.which == 48) { h(event); hash(); } // '0'
+      if (event.which == 49) { move(function(i) {return 1})(event); hash(); }
+      if (event.which == 50) { move(function(i) {return 2})(event); hash(); }
+      if (event.which == 51) { move(function(i) {return 3})(event); hash(); }
+      if (event.which == 52) { move(function(i) {return 4})(event); hash(); }
+      if (event.which == 53) { move(function(i) {return 5})(event); hash(); }
+      if (event.which == 54) { move(function(i) {return 6})(event); hash(); }
+      if (event.which == 55) { move(function(i) {return 7})(event); hash(); }
+      if (event.which == 56) { move(function(i) {return 8})(event); hash(); }
+      if (event.which == 57) { move(function(i) {return 9})(event); hash(); }
       if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
     } :
-      activities_index ? function(event) {
-      if (!ENABLE_KEY_NAV) return true;
-      if (event.which == 40) { j(event) } // down arrow
-      if (event.which == 74) { j(event) }
-      if (event.which == 38) { k(event) } // up arrow
-      if (event.which == 75) { k(event) }
-      if (event.which == 79) { o(event) }
-      if (event.which == 80) { p(event) }
-      if (event.which == 86) { v(event) }
-      if (event.which == 13) { v(event) } // Enter key
-      if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
-    } :
-      issues_index | search_index | my_page | wiki_index ? function(event) {
+      welcome_index | 
+      projects_index | projects_show |
+      activities_index |
+      issues_index | search_index |
+      my_page | wiki_index ? function(event) {
       if (!ENABLE_KEY_NAV) return true;
       if (event.which == 40) { j(event) } // down arrow
       if (event.which == 74) { j(event) }

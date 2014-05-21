@@ -8,8 +8,13 @@
  */
 
 
+body.controller-welcome.action-index div.box > p.ldrize-focus,
+body.controller-welcome.action-index div.box > ul > li.ldrize-focus,
+body.controller-projects.action-index #projects-index > ul > li.ldrize-focus,
+body.controller-projects.action-show div.box > ul > li.ldrize-focus,
+body.controller-projects.action-show div.box > p.ldrize-focus,
 body.controller-issues.action-show #history div.journal.ldrize-focus,
-body.controller-issues.action-index .ldrize-focus td.id
+body.controller-issues.action-index .ldrize-focus td.id,
 body.controller-activities.action-index #activity dt.ldrize-focus,
 body.controller-search.action-index .ldrize-focus,
 body.controller-my.action-page tr.issue.ldrize-focus td.id,
@@ -21,10 +26,17 @@ body.controller-wiki.action-date_index #content > ul > li.ldrize-focus
 	background-repeat: no-repeat;
 }
 
-body.controller-my.action-page tr.issue.ldrize-focus,
+body.controller-projects.action-index #projects-index > ul > li.ldrize-focus,
+body.controller-projects.action-show div.box > ul > li.ldrize-focus,
+body.controller-my.action-page tr.issue.ldrize-focus td.id,
+body.controller-issues.action-show #history div.journal.ldrize-focus,
+body.controller-issues.action-index .ldrize-focus td.id,
 body.controller-wiki.action-index #content > ul > li.ldrize-focus,
 body.controller-wiki.action-date_index #content > ul > li.ldrize-focus
 {
 	padding-left: 8px;
 }
 
+:target {
+   background: #ffb;
+}
