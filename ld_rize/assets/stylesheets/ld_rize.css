@@ -40,3 +40,7 @@ body.controller-wiki.action-date_index #content > ul > li.ldrize-focus
 :target {
    background: #ffb;
 }
+
+.ldrize-pinned {
+	text-decoration: underline;
+}

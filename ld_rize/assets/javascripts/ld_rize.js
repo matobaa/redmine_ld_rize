@@ -71,9 +71,11 @@ $(document).ready(function($) {
     pinned.removeClass('ldrize-pinned');
     var opener = function(pinned) {
       if(!pinned.length) { return; }
-      var url = $('a', pinned.splice(0,1))[0].href;
-      window.setTimeout(function() {window.open(url, "_blank")}, 500);
-      opener(pinned); // spliced
+      // works well in firefox and IE, but chrome opens only one window... 
+      window.setTimeout(function() {
+        var url = $('a', pinned.splice(0,1))[0].href;
+        window.open(url, "_blank"); opener(pinned);
+      }, 200);
     };
     opener(pinned);
   };
@@ -82,7 +84,7 @@ $(document).ready(function($) {
     window.open(url, "_blank")
   }
   hash = function() {
-  	window.location.hash = '#' + selected.attr('id');
+    window.location.hash = '#' + selected.attr('id');
   }
   $(document).bind('keydown',
     issues_show ? function(event) {
