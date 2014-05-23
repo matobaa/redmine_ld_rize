@@ -8,7 +8,6 @@
 $(document).ready(function($) {
   var index = -1;
   var rows;
-  var ENABLE_KEY_NAV = true;
   welcome_index = $('body.controller-welcome.action-index').length;
   projects_index = $('body.controller-projects.action-index').length;
   projects_show = $('body.controller-projects.action-show').length;
@@ -51,7 +50,8 @@ $(document).ready(function($) {
       }
       selected = $(rows[index])
       selected.addClass('ldrize-focus');
-      $('html, body').scrollTop(selected.offset().top);
+      $('html, body').stop(true, true).animate({ scrollTop: selected.offset().top }, 'swing');
+
       event.preventDefault();
     }
   }
@@ -88,7 +88,7 @@ $(document).ready(function($) {
   }
   $(document).bind('keydown',
     issues_show ? function(event) {
-      if (!ENABLE_KEY_NAV) return true;
+      if (!enable_key_nav()) return true;
       if (event.which == 71) { g(event); hash(); }
       if (event.which == 72) { h(event); hash(); }
       if (event.which == 40) { j(event); hash(); } // down arrow
@@ -112,7 +112,7 @@ $(document).ready(function($) {
       activities_index |
       issues_index | search_index |
       my_page | wiki_index ? function(event) {
-      if (!ENABLE_KEY_NAV) return true;
+      if (!enable_key_nav()) return true;
       if (event.which == 40) { j(event) } // down arrow
       if (event.which == 74) { j(event) }
       if (event.which == 38) { k(event) } // up arrow
@@ -128,10 +128,9 @@ $(document).ready(function($) {
     } :
     function() { /* default; pass */ }
   )
-  $(function() {
-    $('a,input,select,textarea,button').bind({
-      focus: function() { ENABLE_KEY_NAV = false; },
-      blur: function() { ENABLE_KEY_NAV = true; }
-    });
-  });
+  enable_key_nav = function() {
+  	var element = (document.activeElement || window.getSelection().focusNode);
+  	return $.inArray(element.nodeName.toLowerCase(),
+	  	["a","input","select","textarea","button"]) == -1; // not found
+  }
 })
