@@ -9,7 +9,7 @@ you should have received as part of this distribution.
 
 class LDRizeHooks < Redmine::Hook::ViewListener
   def view_layouts_base_html_head(context = { })
-    javascript_include_tag('ld_rize.js', :plugin => 'ld_rize') +
-    stylesheet_link_tag('ld_rize.css', :plugin => 'ld_rize')
+    javascript_include_tag('ld_rize.js', :plugin => 'redmine_ld_rize') +
+    stylesheet_link_tag('ld_rize.css', :plugin => 'redmine_ld_rize')
   end
 end

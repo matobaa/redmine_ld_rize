@@ -105,7 +105,7 @@ $(document).ready(function($) {
       if (event.which == 55) { move(function(i) {return 7})(event); hash(); }
       if (event.which == 56) { move(function(i) {return 8})(event); hash(); }
       if (event.which == 57) { move(function(i) {return 9})(event); hash(); }
-      if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
+      if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
     } :
       welcome_index | 
       projects_index | projects_show |
@@ -124,7 +124,7 @@ $(document).ready(function($) {
       if (event.which == 71) { g(event) }
       if (event.which == 72) { h(event) }
       if (event.which == 48) { h(event) } // '0'
-      if (event.key == '/') { $("#q").focus(); event.preventDefault(); }
+      if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
     } :
     function() { /* default; pass */ }
   )

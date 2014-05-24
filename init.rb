@@ -1,6 +1,6 @@
 require_dependency 'ld_rize_hooks'
 
-Redmine::Plugin.register :ld_rize do
+Redmine::Plugin.register :redmine_ld_rize do
   name 'LDRize plugin'
   author 'MATOBA Akihiro'
   description 'vi-like keyboard navigation with j or k key'
