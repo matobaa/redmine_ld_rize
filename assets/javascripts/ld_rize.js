@@ -91,9 +91,9 @@ $(document).ready(function($) {
       if (!enable_key_nav()) return true;
       if (event.which == 71) { g(event); hash(); }
       if (event.which == 72) { h(event); hash(); }
-      if (event.which == 40) { j(event); hash(); } // down arrow
+   // if (event.which == 40) { j(event); hash(); } // down arrow
       if (event.which == 74) { j(event); hash(); }
-      if (event.which == 38) { k(event); hash(); } // up arrow
+   // if (event.which == 38) { k(event); hash(); } // up arrow
       if (event.which == 75) { k(event); hash(); }
       if (event.which == 48) { h(event); hash(); } // '0'
       if (event.which == 49) { move(function(i) {return 1})(event); hash(); }
