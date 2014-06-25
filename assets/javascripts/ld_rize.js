@@ -86,26 +86,38 @@ $(document).ready(function($) {
   hash = function() {
     window.location.hash = '#' + selected.attr('id');
   }
+  scroll = function(ratio) {
+      target = $('body').scrollTop() + $('html').scrollTop() + $(window).height() * ratio / 100;
+      $('html, body').stop(true, true).animate({ scrollTop: target }, 'fast', 'swing');
+  }
   $(document).bind('keydown',
     issues_show ? function(event) {
       if (!enable_key_nav()) return true;
-      if (event.which == 71) { g(event); hash(); }
-      if (event.which == 72) { h(event); hash(); }
-   // if (event.which == 40) { j(event); hash(); } // down arrow
-      if (event.which == 74) { j(event); hash(); }
-   // if (event.which == 38) { k(event); hash(); } // up arrow
-      if (event.which == 75) { k(event); hash(); }
-      if (event.which == 48) { h(event); hash(); } // '0'
-      if (event.which == 49) { move(1)(event); hash(); }
-      if (event.which == 50) { move(2)(event); hash(); }
-      if (event.which == 51) { move(3)(event); hash(); }
-      if (event.which == 52) { move(4)(event); hash(); }
-      if (event.which == 53) { move(5)(event); hash(); }
-      if (event.which == 54) { move(6)(event); hash(); }
-      if (event.which == 55) { move(7)(event); hash(); }
-      if (event.which == 56) { move(8)(event); hash(); }
-      if (event.which == 57) { move(9)(event); hash(); }
-      if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
+      if (!event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        if (event.which == 71) { g(event); hash(); }
+        if (event.which == 72) { h(event); hash(); }
+     // if (event.which == 40) { j(event); hash(); } // down arrow
+        if (event.which == 74) { j(event); hash(); }
+     // if (event.which == 38) { k(event); hash(); } // up arrow
+        if (event.which == 75) { k(event); hash(); }
+        if (event.which == 48) { h(event); hash(); } // '0'
+        if (event.which == 49) { move(1)(event); hash(); }
+        if (event.which == 50) { move(2)(event); hash(); }
+        if (event.which == 51) { move(3)(event); hash(); }
+        if (event.which == 52) { move(4)(event); hash(); }
+        if (event.which == 53) { move(5)(event); hash(); }
+        if (event.which == 54) { move(6)(event); hash(); }
+        if (event.which == 55) { move(7)(event); hash(); }
+        if (event.which == 56) { move(8)(event); hash(); }
+        if (event.which == 57) { move(9)(event); hash(); }
+        if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
+      }
+      if (event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        if (event.which == 85) { scroll(-50); event.preventDefault(); } // u
+        if (event.which == 68) { scroll(+50); event.preventDefault(); } // d
+        if (event.which == 70) { scroll(+100); event.preventDefault(); } // f
+        if (event.which == 66) { scroll(-100); event.preventDefault(); } // b
+      }
     } :
       welcome_index | 
       projects_index | projects_show |
@@ -113,18 +125,26 @@ $(document).ready(function($) {
       issues_index | search_index |
       my_page | wiki_index ? function(event) {
       if (!enable_key_nav()) return true;
-      if (event.which == 40) { j(event) } // down arrow
-      if (event.which == 74) { j(event) }
-      if (event.which == 38) { k(event) } // up arrow
-      if (event.which == 75) { k(event) }
-      if (event.which == 79) { o(event) }
-      if (event.which == 80) { p(event) }
-      if (event.which == 86) { v(event) }
-      if (event.which == 13) { v(event) } // Enter key
-      if (event.which == 71) { g(event) }
-      if (event.which == 72) { h(event) }
-      if (event.which == 48) { h(event) } // '0'
-      if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
+      if (!event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        if (event.which == 40) { j(event) } // down arrow
+        if (event.which == 74) { j(event) }
+        if (event.which == 38) { k(event) } // up arrow
+        if (event.which == 75) { k(event) }
+        if (event.which == 79) { o(event) }
+        if (event.which == 80) { p(event) }
+        if (event.which == 86) { v(event) }
+        if (event.which == 13) { v(event) } // Enter key
+        if (event.which == 71) { g(event) }
+        if (event.which == 72) { h(event) }
+        if (event.which == 48) { h(event) } // '0'
+        if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
+      }
+      if (event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
+        if (event.which == 85) { scroll(-50); event.preventDefault(); } // u
+        if (event.which == 68) { scroll(+50); event.preventDefault(); } // d
+        if (event.which == 70) { scroll(+100); event.preventDefault(); } // f
+        if (event.which == 66) { scroll(-100); event.preventDefault(); } // b
+      }
     } :
     function() { /* default; pass */ }
   )
