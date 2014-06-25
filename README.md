@@ -8,17 +8,21 @@ vi-like keyboard navigation for Redmine ITS
 You can navigate with `j` or `k` keys between rows
 on my_page, projects_list, home of a project, issue list, issue, wiki date/name index, and so on.
 
-* `j` or down arrow ... select a next item
-* `k` or up arrow ... select a previous item
+* `j` ... select a next item
+* `k` ... select a previous item
 * `v` or Enter ... open selected item
 
 * `h` or `0` ... select a first item
 * `g` ... select a last item
+* `1` .. `9` ... select a specified item
 
-* `/` ... focus search bar
+* `/` ... focus to search bar
 
 * `p` ... pin selected item
 * `o` ... open pinned items, or selected item if no item are pinned
+
+* `Ctrl`+`u` and `Ctrl`+`d` ... half scroll up/down
+* `Ctrl`+`f` and `Ctrl`+`b` ... full scroll up/down
 
 # Installation
 
