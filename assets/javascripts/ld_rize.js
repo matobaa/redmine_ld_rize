@@ -43,7 +43,7 @@ $(document).ready(function($) {
       if (index == -1) {
         rescan();  // rescan will do after ticket.commentOnly hiding at document.ready...
       }
-      index = moveindex(index);
+      index = $.isFunction(moveindex) ? moveindex(index) : moveindex;
       index = index < 0 ? 0 : index >= rows.length ? rows.length-1 : index;
       if (index == rows.length-1) {
         rescan();
@@ -58,7 +58,7 @@ $(document).ready(function($) {
   j = move(function(index) {return ++index})
   k = move(function(index) {return --index})
   g = move(function(index) {return Number.MAX_VALUE})
-  h = move(function(index) {return 0})
+  h = move(0)
   p = function(event) {
     selected = $(rows[index])
     selected.toggleClass('ldrize-pinned');
@@ -96,15 +96,15 @@ $(document).ready(function($) {
    // if (event.which == 38) { k(event); hash(); } // up arrow
       if (event.which == 75) { k(event); hash(); }
       if (event.which == 48) { h(event); hash(); } // '0'
-      if (event.which == 49) { move(function(i) {return 1})(event); hash(); }
-      if (event.which == 50) { move(function(i) {return 2})(event); hash(); }
-      if (event.which == 51) { move(function(i) {return 3})(event); hash(); }
-      if (event.which == 52) { move(function(i) {return 4})(event); hash(); }
-      if (event.which == 53) { move(function(i) {return 5})(event); hash(); }
-      if (event.which == 54) { move(function(i) {return 6})(event); hash(); }
-      if (event.which == 55) { move(function(i) {return 7})(event); hash(); }
-      if (event.which == 56) { move(function(i) {return 8})(event); hash(); }
-      if (event.which == 57) { move(function(i) {return 9})(event); hash(); }
+      if (event.which == 49) { move(1)(event); hash(); }
+      if (event.which == 50) { move(2)(event); hash(); }
+      if (event.which == 51) { move(3)(event); hash(); }
+      if (event.which == 52) { move(4)(event); hash(); }
+      if (event.which == 53) { move(5)(event); hash(); }
+      if (event.which == 54) { move(6)(event); hash(); }
+      if (event.which == 55) { move(7)(event); hash(); }
+      if (event.which == 56) { move(8)(event); hash(); }
+      if (event.which == 57) { move(9)(event); hash(); }
       if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
     } :
       welcome_index | 
