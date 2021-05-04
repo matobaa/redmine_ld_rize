@@ -1,10 +1,24 @@
-require_dependency 'ld_rize_hooks'
+=begin
+-*- coding: utf-8 -*-
+Copyright (C) 2014 MATOBA Akihiro <matobaa+github@gmail.com>
+All rights reserved.
+
+This software is licensed as described in the file LICENSE, which
+you should have received as part of this distribution.
+=end
 
 Redmine::Plugin.register :redmine_ld_rize do
   name 'LDRize plugin'
-  author 'MATOBA Akihiro'
+  author 'Akihiro MATOBA'
   description 'vi-like keyboard navigation with j or k key'
   version '0.0.1'
-  url 'http://trac-hacks.org/wiki/matobaa'
-  author_url 'http://www.github.com/matobaa'
+  url 'https://github.com/matobaa/redmine_ld_rize'
+  author_url 'https://www.github.com/matobaa'
+end
+
+class LDRizeHooks < Redmine::Hook::ViewListener
+  def view_layouts_base_html_head(context = { })
+    javascript_include_tag('ld_rize.js', :plugin => 'redmine_ld_rize') +
+    stylesheet_link_tag('ld_rize.css', :plugin => 'redmine_ld_rize')
+  end
 end

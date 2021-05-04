@@ -133,10 +133,10 @@ $(document).ready(function($) {
         if (event.which == 79) { o(event) }
         if (event.which == 80) { p(event) }
         if (event.which == 86) { v(event) }
-        if (event.which == 13) { v(event) } // Enter key
+        // if (event.which == 13) { v(event) } // Enter key
         if (event.which == 71) { g(event) }
         if (event.which == 72) { h(event) }
-        if (event.which == 48) { h(event) } // '0'
+        // if (event.which == 48) { h(event) } // '0'
         if (event.which == 191) { $("#q").focus(); event.preventDefault(); }
       }
       if (event.ctrlKey && !event.altKey && !event.shiftKey && !event.metaKey) {
