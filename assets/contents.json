@@ -1,0 +1,10 @@
+[
+    {
+        "name": "redmine_ld_rize.css",
+        "url": "https://github.com/matobaa/redmine_ld_rize/blob/81fa4a97e31de5b6f3c829f549d75b18e6c3c705/assets/stylesheets/ld_rize.css"
+    },
+    {  
+        "name": "redmine_ld_rize.js",
+        "url": "https://github.com/matobaa/redmine_ld_rize/blob/81fa4a97e31de5b6f3c829f549d75b18e6c3c705/assets/javascripts/ld_rize.js"
+    }
+]
